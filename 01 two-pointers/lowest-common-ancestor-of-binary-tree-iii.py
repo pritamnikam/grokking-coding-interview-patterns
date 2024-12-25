@@ -1,12 +1,51 @@
+from typing import List
+from queue import Queue
+from collections import deque
+
 # Definition for a binary tree node
-class EduTreeNode:
+class TreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
         self.parent = None
 
-# from EduTreeNode import *
+class BinaryTree:
+    def __init__(self, nodes):
+        self.root = self.createBinaryTree(nodes)
+
+    def createBinaryTree(self, nodes):
+        if not nodes or nodes[0] is None:
+            return None
+        root = TreeNode(nodes[0])
+        q = deque([root])
+        i = 1
+        while i < len(nodes):
+            curr = q.popleft()
+            if i < len(nodes) and nodes[i] is not None:
+                curr.left = TreeNode(nodes[i])
+                curr.left.parent = curr
+                q.append(curr.left)
+            i += 1
+            if i < len(nodes) and nodes[i] is not None:
+                curr.right = TreeNode(nodes[i])
+                curr.right.parent = curr
+                q.append(curr.right)
+            i += 1
+        return root
+    def find(self, root, value):
+        if not root:
+            return None
+        q = deque([root])
+        while q:
+            currentNode = q.popleft()
+            if currentNode.data == value:
+                return currentNode
+            if currentNode.left:
+                q.append(currentNode.left)
+            if currentNode.right:
+                q.append(currentNode.right)
+        return None
 
 def lowest_common_ancestor(p, q):
     # initialize two pinters one on each of the given node

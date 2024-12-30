@@ -22,7 +22,7 @@ def find_max_sliding_window(nums, w):
         current_window.append(i)
 
     # top of deque is the max-value in present window
-    output.appen(nums[current_window[0]])
+    output.append(nums[current_window[0]])
     
     # slide window to the right
     for i in range(w, len(nums)):

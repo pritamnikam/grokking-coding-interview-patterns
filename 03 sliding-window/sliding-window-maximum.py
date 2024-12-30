@@ -1,4 +1,4 @@
-from collection import deque
+from collections import deque
 
 # function to clean up the deque
 def clean_up(i, current_window, nums):

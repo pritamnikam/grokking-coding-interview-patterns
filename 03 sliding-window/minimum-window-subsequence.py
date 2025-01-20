@@ -27,9 +27,10 @@ def min_window(str1, str2):
                     min_subsequence = str1[start : end + 1]
                 # set index_s1 to end + 1 to continue checking in str1
                 # after this discovered subsequence
-                index_s1 = end + 1
+                # index_s1 = end + 1
+                index_s1 = start
                 index_s2 = 0
-                continue
+                # continue
         # increment pointer index_s1 to check next character in str1
         index_s1 += 1
     # return the minimum window subsequence
